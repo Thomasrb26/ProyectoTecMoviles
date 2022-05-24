@@ -6,17 +6,27 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: NavBar(),
+        //drawer: NavBar(),
         appBar: AppBar(
           title: Text(
             'Popular',
             style: TextStyle(color: Colors.black),
           ),
           elevation: 0,
-          actions: [],
+          actions: [
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {},
+            )
+          ],
         ),
-        body: Column(
-          children: [CardSwap()],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              CardSwap(),
+              CardSlider(),
+            ],
+          ),
         ));
   }
 }
