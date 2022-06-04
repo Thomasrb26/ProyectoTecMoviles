@@ -23,8 +23,9 @@ class CardSwap extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
                   placeholder:
-                      NetworkImage('htpps://via.placeholder.com/300x400'),
-                  image: NetworkImage('htpps://via.placeholder.com/300x400'),
+                      const NetworkImage('htpps://via.placeholder.com/300x400'),
+                  image:
+                      const NetworkImage('htpps://via.placeholder.com/300x400'),
                   fit: BoxFit.cover,
                 ),
               ));

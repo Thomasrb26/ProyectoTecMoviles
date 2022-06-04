@@ -9,13 +9,13 @@ class homeScreen extends StatelessWidget {
         //drawer: NavBar(),
         appBar: AppBar(
           title: Text(
-            'Popular',
-            style: TextStyle(color: Colors.black),
+            'Noticias',
+            style: TextStyle(color: Colors.white),
           ),
           elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: Icon(Icons.login_outlined),
               onPressed: () {},
             )
           ],
