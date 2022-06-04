@@ -3,7 +3,7 @@ import 'package:flutter_demo/screens/screens.dart';
 import 'package:flutter_demo/services/actividad_service.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppState());
 
 class AppState extends StatelessWidget {
   @override
