@@ -22,10 +22,10 @@ class CardSwap extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
-                  placeholder:
-                      const NetworkImage('htpps://via.placeholder.com/300x400'),
-                  image:
-                      const NetworkImage('htpps://via.placeholder.com/300x400'),
+                  placeholder: const NetworkImage(
+                      'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
+                  image: const NetworkImage(
+                      'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
                   fit: BoxFit.cover,
                 ),
               ));

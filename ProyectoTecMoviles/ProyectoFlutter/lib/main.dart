@@ -21,12 +21,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ALERTASAPP',
-        initialRoute: 'home',
+        initialRoute: 'login',
         routes: {
-          'home': (_) => homeScreen(),
-          'details': (_) => detailsScreen(),
+          'login': (_) => LoginScreen(),
+          'home': (_) => HomeScreen(),
+          'details': (_) => DetailsScreen(),
         },
         theme: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: Colors.grey[300],
             appBarTheme: AppBarTheme(color: Color.fromRGBO(68, 124, 196, 1))));
   }
 }

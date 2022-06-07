@@ -18,10 +18,18 @@ class ActividadService extends ChangeNotifier {
   //TODO <List<Product>>
   Future CargarActividades() async {
     final url = Uri.https(_baseUrl, 'actividad.json');
-    print(url);
+
     final resp = await http.get(url);
-    print(resp);
+
     final Map<String, dynamic> actividadesMap = json.decode(resp.body);
     print(actividadesMap);
+
+    actividadesMap.forEach((key, value) {
+      final tempActividad = Actividad.fromMap(value);
+      tempActividad.id = key;
+      this.actividades.add(tempActividad);
+    });
+
+    print(this.actividades[0].descripcion);
   }
 }

@@ -18,6 +18,7 @@ class Actividad {
   String fecha;
   String nombre;
   String? sala;
+  String? id;
 
   factory Actividad.fromJson(String str) => Actividad.fromMap(json.decode(str));
 
