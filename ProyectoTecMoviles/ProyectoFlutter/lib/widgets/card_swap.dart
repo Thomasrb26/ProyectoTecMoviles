@@ -17,18 +17,19 @@ class CardSwap extends StatelessWidget {
         itemHeight: size.height * 0.9,
         itemBuilder: (_, int index) {
           return GestureDetector(
-              onTap: () =>
-                  Navigator.pushNamed(context, 'details', arguments: 'tarjeta'),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: FadeInImage(
-                  placeholder: const NetworkImage(
-                      'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
-                  image: const NetworkImage(
-                      'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ));
+            onTap: () =>
+                Navigator.pushNamed(context, 'details', arguments: 'tarjeta'),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: FadeInImage(
+                placeholder: const NetworkImage(
+                    'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
+                image: const NetworkImage(
+                    'https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
         },
       ),
     );

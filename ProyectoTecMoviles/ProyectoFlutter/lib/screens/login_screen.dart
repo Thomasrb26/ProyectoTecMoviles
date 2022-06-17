@@ -74,9 +74,9 @@ class _LoginForm extends StatelessWidget {
               obscureText: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
-                hintText: '********',
+                hintText: '******',
                 labelText: 'Contraseña',
-                prefixIcon: Icons.password_rounded,
+                prefixIcon: Icons.lock_outline,
                 //incons.lock_outline candado
               ),
               onChanged: (value) => loginForm.password = value,
@@ -96,15 +96,26 @@ class _LoginForm extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                 child: Text(
-                  'Ingresar',
+                  loginForm.isLoading ? 'Espere' : 'ingresar',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              onPressed: () {
-                if (!loginForm.isValidForm()) return;
+              onPressed: loginForm.isLoading
+                  ? null
+                  : () async {
+                      FocusScope.of(context).unfocus();
 
-                Navigator.pushReplacementNamed(context, 'home');
-              },
+                      if (!loginForm.isValidForm()) return;
+
+                      loginForm.isLoading = true;
+
+                      await Future.delayed(Duration(seconds: 2));
+
+                      // POR HACER: validar si el login es correcto
+                      loginForm.isLoading = false;
+
+                      Navigator.pushReplacementNamed(context, 'home');
+                    },
             ),
           ],
         ),
