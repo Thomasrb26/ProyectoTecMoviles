@@ -9,6 +9,7 @@ class Actividad {
     required this.descripcion,
     this.edificio,
     required this.fecha,
+    this.imagen,
     required this.nombre,
     this.sala,
   });
@@ -16,6 +17,7 @@ class Actividad {
   String descripcion;
   String? edificio;
   String fecha;
+  String? imagen;
   String nombre;
   String? sala;
   String? id;
@@ -28,6 +30,7 @@ class Actividad {
         descripcion: json["descripcion"],
         edificio: json["edificio"],
         fecha: json["fecha"],
+        imagen: json["imagen"],
         nombre: json["nombre"],
         sala: json["sala"],
       );
@@ -36,6 +39,7 @@ class Actividad {
         "descripcion": descripcion,
         "edificio": edificio,
         "fecha": fecha,
+        "imagen": imagen,
         "nombre": nombre,
         "sala": sala,
       };
