@@ -5,20 +5,22 @@
 import 'dart:convert';
 
 class Actividad {
-  Actividad({
-    required this.descripcion,
-    this.edificio,
-    required this.fecha,
-    required this.nombre,
-    this.sala,
-  });
+  Actividad(
+      {required this.descripcion,
+      this.edificio,
+      required this.fecha,
+      this.imagen,
+      required this.nombre,
+      this.sala,
+      this.id});
 
   String descripcion;
   String? edificio;
   String fecha;
+  String? imagen;
   String nombre;
-  String? sala;
   String? id;
+  String? sala;
 
   factory Actividad.fromJson(String str) => Actividad.fromMap(json.decode(str));
 
@@ -28,6 +30,7 @@ class Actividad {
         descripcion: json["descripcion"],
         edificio: json["edificio"],
         fecha: json["fecha"],
+        imagen: json["imagen"],
         nombre: json["nombre"],
         sala: json["sala"],
       );
@@ -36,7 +39,18 @@ class Actividad {
         "descripcion": descripcion,
         "edificio": edificio,
         "fecha": fecha,
+        "imagen": imagen,
         "nombre": nombre,
         "sala": sala,
       };
+
+  Actividad copy() => Actividad(
+        descripcion: this.descripcion,
+        edificio: this.edificio,
+        fecha: this.fecha,
+        imagen: this.imagen,
+        nombre: this.nombre,
+        id: this.id,
+        sala: this.sala,
+      );
 }

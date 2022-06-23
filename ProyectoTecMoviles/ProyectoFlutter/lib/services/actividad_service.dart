@@ -8,6 +8,7 @@ class ActividadService extends ChangeNotifier {
   final String _baseUrl = 'proyectotecmov-default-rtdb.firebaseio.com';
 
   final List<Actividad> actividades = [];
+  late Actividad selectedActividad;
 
   bool isLoading = true;
 
@@ -16,7 +17,10 @@ class ActividadService extends ChangeNotifier {
   }
 
   //TODO <List<Product>>
-  Future CargarActividades() async {
+  Future<List<Actividad>> CargarActividades() async {
+    this.isLoading = true;
+    notifyListeners();
+
     final url = Uri.https(_baseUrl, 'actividad.json');
 
     final resp = await http.get(url);
@@ -31,5 +35,9 @@ class ActividadService extends ChangeNotifier {
     });
 
     print(this.actividades[0].descripcion);
+
+    this.isLoading = false;
+    notifyListeners();
+    return this.actividades;
   }
 }
