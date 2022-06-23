@@ -8,6 +8,7 @@ class ActividadService extends ChangeNotifier {
   final String _baseUrl = 'proyectotecmov-default-rtdb.firebaseio.com';
 
   final List<Actividad> actividades = [];
+  late Actividad selectedActividad;
 
   bool isLoading = true;
 
