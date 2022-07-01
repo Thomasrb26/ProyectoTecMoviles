@@ -49,6 +49,7 @@ class ActividadService extends ChangeNotifier {
 
     if (actividad.id == null) {
       //Crear actividad
+      await this.createActividad(actividad);
     } else {
       //actualizar
       await this.updateActividad(actividad);
@@ -73,6 +74,24 @@ class ActividadService extends ChangeNotifier {
         this.actividades.indexWhere((element) => element.id == actividad.id);
 
     this.actividades[index] = actividad;
+    return actividad.id!;
+  }
+
+  Future<String> createActividad(Actividad actividad) async {
+    final url = Uri.https(_baseUrl, 'actividad.json');
+
+    final resp = await http.post(url, body: actividad.toJson());
+
+    final decodedData = json.decode(resp.body);
+
+    print(decodedData);
+
+    actividad.id = decodedData['name'];
+
+    this.actividades.add(actividad);
+
+    //TODO actualizar listado de productos
+
     return actividad.id!;
   }
 }

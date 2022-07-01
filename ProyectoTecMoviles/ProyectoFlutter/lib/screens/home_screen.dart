@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
             fecha: '',
             nombre: '',
           );
-          //Navigator.pushNamed(context, 'activities');
+          Navigator.pushNamed(context, 'activities');
         },
       ),
 
