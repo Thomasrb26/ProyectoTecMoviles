@@ -11,6 +11,7 @@ class ActividadService extends ChangeNotifier {
   late Actividad selectedActividad;
 
   bool isLoading = true;
+  bool isSaving = false;
 
   ActividadService() {
     this.CargarActividades();
@@ -38,6 +39,40 @@ class ActividadService extends ChangeNotifier {
 
     this.isLoading = false;
     notifyListeners();
+
     return this.actividades;
+  }
+
+  Future saveOrCreateActividad(Actividad actividad) async {
+    isSaving = true;
+    notifyListeners();
+
+    if (actividad.id == null) {
+      //Crear actividad
+    } else {
+      //actualizar
+      await this.updateActividad(actividad);
+    }
+
+    isSaving = false;
+    notifyListeners();
+  }
+
+  Future<String> updateActividad(Actividad actividad) async {
+    final url = Uri.https(_baseUrl, 'actividad/${actividad.id}.json');
+
+    final resp = await http.put(url, body: actividad.toJson());
+
+    final decodedData = resp.body;
+
+    print(decodedData);
+
+    //TODO actualizar listado de productos
+
+    final index =
+        this.actividades.indexWhere((element) => element.id == actividad.id);
+
+    this.actividades[index] = actividad;
+    return actividad.id!;
   }
 }

@@ -25,7 +25,9 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.login_outlined),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'login');
+            },
           )
         ],
       ),
@@ -35,7 +37,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () {
             actividadesService.selectedActividad =
                 actividadesService.actividades[index].copy();
-            // Navigator.pushNamed(context, 'activities');
+            Navigator.pushNamed(context, 'activities');
           },
           child: ProductCard(
             actividad: actividadesService.actividades[index],
@@ -50,7 +52,7 @@ class HomeScreen extends StatelessWidget {
             fecha: '',
             nombre: '',
           );
-          Navigator.pushNamed(context, 'activities');
+          //Navigator.pushNamed(context, 'activities');
         },
       ),
 
