@@ -25,7 +25,9 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.login_outlined),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'login');
+            },
           )
         ],
       ),
