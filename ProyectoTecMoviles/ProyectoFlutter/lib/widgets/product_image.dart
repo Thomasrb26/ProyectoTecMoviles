@@ -1,4 +1,7 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 class ProductImage extends StatelessWidget {
   final String? url;
@@ -18,16 +21,7 @@ class ProductImage extends StatelessWidget {
             topLeft: Radius.circular(45),
             topRight: Radius.circular(45),
           ),
-          child: this.url == null
-              ? Image(
-                  image: AssetImage('assets/no-image.png'),
-                  fit: BoxFit.cover,
-                )
-              : FadeInImage(
-                  image: NetworkImage(this.url!),
-                  placeholder: AssetImage('assets/jar-loading.gif'),
-                  fit: BoxFit.cover,
-                ),
+          child: getImage(url),
         ),
       ),
     );
@@ -44,4 +38,24 @@ class ProductImage extends StatelessWidget {
               offset: Offset(0, 5),
             )
           ]);
+
+  Widget getImage(String? picture) {
+    if (picture == null)
+      return Image(
+        image: AssetImage('assets/no-image.png'),
+        fit: BoxFit.cover,
+      );
+
+    if (picture.startsWith('http'))
+      return FadeInImage(
+        image: NetworkImage(this.url!),
+        placeholder: AssetImage('assets/jar-loading.gif'),
+        fit: BoxFit.cover,
+      );
+
+    return Image.file(
+      File(picture),
+      fit: BoxFit.cover,
+    );
+  }
 }

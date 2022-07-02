@@ -4,6 +4,7 @@ import 'package:flutter_demo/screens/ui/input_decorations.dart';
 import 'package:flutter_demo/services/services.dart';
 import 'package:flutter_demo/widgets/widgets.dart';
 import 'package:http/retry.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -51,8 +52,23 @@ class _ActividadScreenBody extends StatelessWidget {
                   top: 60,
                   right: 20,
                   child: IconButton(
-                    onPressed: () {
+                    onPressed: () async {
                       //TODO camara o galeria
+                      final picker = new ImagePicker();
+                      final XFile? pickedFile = await picker.pickImage(
+                        source: ImageSource.camera,
+                        imageQuality: 100,
+                      );
+
+                      if (pickedFile == null) {
+                        print('no seleccionó nada');
+                        return;
+                      }
+
+                      print('tenemos imagen ${pickedFile.path}');
+
+                      actividadService
+                          .updateSelectedProductImage(pickedFile.path);
                     },
                     icon: Icon(Icons.camera_alt_outlined,
                         size: 40, color: Colors.white),
@@ -67,12 +83,23 @@ class _ActividadScreenBody extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save_outlined),
-        onPressed: () async {
-          if (!actividadForm.isValidForm()) return;
+        child: actividadService.isSaving
+            ? CircularProgressIndicator(color: Colors.white)
+            : Icon(Icons.save_outlined),
+        onPressed: actividadService.isSaving
+            ? null
+            : () async {
+                if (!actividadForm.isValidForm()) return;
 
-          await actividadService.saveOrCreateActividad(actividadForm.actividad);
-        },
+                final String? imageUrl = await actividadService.uploadImage();
+
+                print(imageUrl);
+
+                if (imageUrl != null) actividadForm.actividad.imagen = imageUrl;
+
+                await actividadService
+                    .saveOrCreateActividad(actividadForm.actividad);
+              },
       ),
     );
   }
