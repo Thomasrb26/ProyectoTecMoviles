@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () {
             actividadesService.selectedActividad =
                 actividadesService.actividades[index].copy();
-            // Navigator.pushNamed(context, 'activities');
+            Navigator.pushNamed(context, 'activities');
           },
           child: ProductCard(
             actividad: actividadesService.actividades[index],
