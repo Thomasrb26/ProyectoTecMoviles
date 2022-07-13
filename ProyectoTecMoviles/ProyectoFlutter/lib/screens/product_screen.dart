@@ -153,7 +153,16 @@ class _ActividadForm extends StatelessWidget {
                 title: Text('Valido'),
                 activeColor: Colors.indigo,
                 onChanged: (value) {
-                  actividadForm.updateAvailability(value);
+                  actividadForm.updateAvailabilityValido(value);
+                },
+              ),
+              SizedBox(height: 30),
+              SwitchListTile.adaptive(
+                value: actividad.incidente,
+                title: Text('Incidente?'),
+                activeColor: Colors.indigo,
+                onChanged: (value) {
+                  actividadForm.updateAvailabilityIncidente(value);
                 },
               ),
               SizedBox(height: 30),

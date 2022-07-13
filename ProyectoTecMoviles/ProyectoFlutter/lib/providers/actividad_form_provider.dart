@@ -8,9 +8,15 @@ class ActividadFormPRovider extends ChangeNotifier {
 
   ActividadFormPRovider(this.actividad);
 
-  updateAvailability(bool value) {
+  updateAvailabilityValido(bool value) {
     print(value);
     this.actividad.valido = value;
+    notifyListeners();
+  }
+
+  updateAvailabilityIncidente(bool value) {
+    print(value);
+    this.actividad.incidente = value;
     notifyListeners();
   }
 

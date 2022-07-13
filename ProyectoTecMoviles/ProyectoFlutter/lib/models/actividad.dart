@@ -13,6 +13,7 @@ class Actividad {
     required this.nombre,
     this.id,
     this.valido = false,
+    this.incidente = false,
   });
 
   String descripcion;
@@ -22,6 +23,7 @@ class Actividad {
   String nombre;
   String? id;
   bool valido;
+  bool incidente;
 
   factory Actividad.fromJson(String str) => Actividad.fromMap(json.decode(str));
 
@@ -34,6 +36,7 @@ class Actividad {
         imagen: json["imagen"],
         nombre: json["nombre"],
         valido: json["valido"],
+        incidente: json["incidente"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -43,6 +46,7 @@ class Actividad {
         "imagen": imagen,
         "nombre": nombre,
         "valido": valido,
+        "incidente": incidente,
       };
 
   Actividad copy() => Actividad(
@@ -53,5 +57,6 @@ class Actividad {
         nombre: this.nombre,
         id: this.id,
         valido: this.valido,
+        incidente: this.incidente,
       );
 }
