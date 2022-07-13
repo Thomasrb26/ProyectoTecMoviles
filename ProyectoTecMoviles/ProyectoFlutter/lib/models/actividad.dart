@@ -5,14 +5,15 @@
 import 'dart:convert';
 
 class Actividad {
-  Actividad(
-      {required this.descripcion,
-      this.edificio,
-      required this.fecha,
-      this.imagen,
-      required this.nombre,
-      this.sala,
-      this.id});
+  Actividad({
+    required this.descripcion,
+    this.edificio,
+    required this.fecha,
+    this.imagen,
+    required this.nombre,
+    this.id,
+    this.valido = false,
+  });
 
   String descripcion;
   String? edificio;
@@ -20,7 +21,7 @@ class Actividad {
   String? imagen;
   String nombre;
   String? id;
-  String? sala;
+  bool valido;
 
   factory Actividad.fromJson(String str) => Actividad.fromMap(json.decode(str));
 
@@ -32,7 +33,7 @@ class Actividad {
         fecha: json["fecha"],
         imagen: json["imagen"],
         nombre: json["nombre"],
-        sala: json["sala"],
+        valido: json["valido"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,7 +42,7 @@ class Actividad {
         "fecha": fecha,
         "imagen": imagen,
         "nombre": nombre,
-        "sala": sala,
+        "valido": valido,
       };
 
   Actividad copy() => Actividad(
@@ -51,6 +52,6 @@ class Actividad {
         imagen: this.imagen,
         nombre: this.nombre,
         id: this.id,
-        sala: this.sala,
+        valido: this.valido,
       );
 }

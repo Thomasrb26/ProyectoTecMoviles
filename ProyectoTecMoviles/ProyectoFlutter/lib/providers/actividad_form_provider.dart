@@ -10,6 +10,8 @@ class ActividadFormPRovider extends ChangeNotifier {
 
   updateAvailability(bool value) {
     print(value);
+    this.actividad.valido = value;
+    notifyListeners();
   }
 
   bool isValidForm() {

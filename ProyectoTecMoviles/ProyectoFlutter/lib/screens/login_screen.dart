@@ -25,11 +25,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50),
-              Text(
-                'Crear nueva cuenta',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 50),
             ],
           ),
         ),
