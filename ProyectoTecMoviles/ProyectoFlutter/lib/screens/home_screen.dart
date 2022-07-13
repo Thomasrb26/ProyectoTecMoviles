@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
             descripcion: '',
             fecha: '',
             nombre: '',
+            ubicacion: '',
           );
           Navigator.pushNamed(context, 'activities');
         },

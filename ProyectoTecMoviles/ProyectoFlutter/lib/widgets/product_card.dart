@@ -26,7 +26,7 @@ class ProductCard extends StatelessWidget {
             Positioned(
               top: 0,
               right: 0,
-              child: _PlaceTag(),
+              child: _PlaceTag(ubicacion: actividad.ubicacion),
             ),
             Positioned(
               top: 0,
@@ -78,6 +78,10 @@ class _DateTag extends StatelessWidget {
 }
 
 class _PlaceTag extends StatelessWidget {
+  final String ubicacion;
+  const _PlaceTag({
+    required this.ubicacion,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,7 +90,7 @@ class _PlaceTag extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            'edificio',
+            ubicacion,
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),

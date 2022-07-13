@@ -7,7 +7,7 @@ import 'dart:convert';
 class Actividad {
   Actividad({
     required this.descripcion,
-    this.edificio,
+    required this.ubicacion,
     required this.fecha,
     this.imagen,
     required this.nombre,
@@ -17,7 +17,7 @@ class Actividad {
   });
 
   String descripcion;
-  String? edificio;
+  String ubicacion;
   String fecha;
   String? imagen;
   String nombre;
@@ -31,7 +31,7 @@ class Actividad {
 
   factory Actividad.fromMap(Map<String, dynamic> json) => Actividad(
         descripcion: json["descripcion"],
-        edificio: json["edificio"],
+        ubicacion: json["ubicacion"],
         fecha: json["fecha"],
         imagen: json["imagen"],
         nombre: json["nombre"],
@@ -41,7 +41,7 @@ class Actividad {
 
   Map<String, dynamic> toMap() => {
         "descripcion": descripcion,
-        "edificio": edificio,
+        "ubicacion": ubicacion,
         "fecha": fecha,
         "imagen": imagen,
         "nombre": nombre,
@@ -51,7 +51,7 @@ class Actividad {
 
   Actividad copy() => Actividad(
         descripcion: this.descripcion,
-        edificio: this.edificio,
+        ubicacion: this.ubicacion,
         fecha: this.fecha,
         imagen: this.imagen,
         nombre: this.nombre,

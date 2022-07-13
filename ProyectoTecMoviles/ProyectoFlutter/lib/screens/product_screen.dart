@@ -148,6 +148,19 @@ class _ActividadForm extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
+              TextFormField(
+                initialValue: actividad.ubicacion,
+                onChanged: (value) => actividad.ubicacion = value,
+                validator: (value) {
+                  if (value == null || value.length < 1)
+                    return 'La ubicacion es obligatoria';
+                },
+                decoration: InputDecorations.authInputDecoration(
+                  hintText: 'ubicacion',
+                  labelText: 'ubicacion',
+                ),
+              ),
+              SizedBox(height: 30),
               SwitchListTile.adaptive(
                 value: actividad.valido,
                 title: Text('Valido'),
