@@ -148,13 +148,36 @@ class _ActividadForm extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
+              TextFormField(
+                initialValue: actividad.ubicacion,
+                onChanged: (value) => actividad.ubicacion = value,
+                validator: (value) {
+                  if (value == null || value.length < 1)
+                    return 'La ubicacion es obligatoria';
+                },
+                decoration: InputDecorations.authInputDecoration(
+                  hintText: 'ubicacion',
+                  labelText: 'ubicacion',
+                ),
+              ),
+              SizedBox(height: 30),
               SwitchListTile.adaptive(
-                  value: true,
-                  title: Text('Valido'),
-                  activeColor: Colors.indigo,
-                  onChanged: (value) {
-                    // TODO
-                  }),
+                value: actividad.valido,
+                title: Text('Valido'),
+                activeColor: Colors.indigo,
+                onChanged: (value) {
+                  actividadForm.updateAvailabilityValido(value);
+                },
+              ),
+              SizedBox(height: 30),
+              SwitchListTile.adaptive(
+                value: actividad.incidente,
+                title: Text('Incidente?'),
+                activeColor: Colors.indigo,
+                onChanged: (value) {
+                  actividadForm.updateAvailabilityIncidente(value);
+                },
+              ),
               SizedBox(height: 30),
             ],
           ),
